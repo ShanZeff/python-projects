@@ -1,2 +1,2 @@
 # python-projects
- fun projects while enhancing my programming skills
+ fun projects I did to enhance my programming skills
