@@ -3,6 +3,8 @@ from words import words
 from hangman_visual import lives_visual_dict
 import string
 
+print(words[1])
+
 def get_valid_word(words):
     word = random.choice(words) # randomly chooses smth from the list
     while "-" in word or " " in word:
