@@ -3,7 +3,6 @@ from words import words
 from hangman_visual import lives_visual_dict
 import string
 
-print(words[1])
 
 def get_valid_word(words):
     word = random.choice(words) # randomly chooses smth from the list
@@ -11,6 +10,7 @@ def get_valid_word(words):
         word = random.choice(words)
     
     return word.upper()
+
 
 def hangman():
     word = get_valid_word(words)
@@ -41,3 +41,6 @@ def hangman():
             print("Invalid character. Please try again.")
 
     # gets here when len(word_letters) == 0
+
+if __name__ == '__main__':
+    hangman()
