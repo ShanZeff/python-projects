@@ -42,5 +42,5 @@ def hangman():
 
     # gets here when len(word_letters) == 0
 
-if __name__ == '__main__':
+if __name__ == '__main__':      # bruhhh i forgot to call
     hangman()
