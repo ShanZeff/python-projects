@@ -23,3 +23,20 @@ class TicTacToe:
         #       if spot == ' ':
         #           moves.append(i)
         # return moves
+
+    def empty_squares(self):
+        return ' ' in self.board
+
+    def num_empty_squares(self):
+        return self.board.count(' ')
+
+def play(game, x_player, o_player, print_game = True):
+    if print_game:
+        game.print_board_nums()
+
+    letter = 'X'    # starting letter
+    # iterate while the game still has empty squares
+    # (we don't have to worry about winner because we'll just return that
+    # which breaks the loop)
+    while game.empty_squares():
+        pass
