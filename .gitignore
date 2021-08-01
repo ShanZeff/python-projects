@@ -1,3 +1,4 @@
 
 hangman/__pycache__/hangman_visual.cpython-39.pyc
 hangman/__pycache__/words.cpython-39.pyc
+*.pyc
