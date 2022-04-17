@@ -1,47 +1,24 @@
-from random import randint
-import pgzrun
-from pgzero.actor import Actor
-from pgzero.game import screen
+import math
+import random
 
-WIDTH = 800
-HEIGHT = 600
+import pygame
+from pygame import mixer
 
-balloon = Actor("balloon")
-balloon.pos = 400, 300
-bird = Actor("bird-up")
-bird.pos = randint(800, 1600), randint(10, 200)
-house = Actor("house")
-house.pos = randint(800, 1600), 460
-tree = Actor("tree")
-tree.pos = randint(800, 1600), 450
+# Intialize the pygame
+pygame.init()
 
-BirdUp = True
-up = False
-GameOver = False
-score = 0
-NumberOfUpdates = 0
-scores = []
+# create the screen
+screen = pygame.display.set_mode((800, 600))
 
+# Background
+background = pygame.image.load('background.png')
 
-def update_high_scores():
-    pass
+running = True
+while running:
+    screen.fill((0, 0, 0))
+    screen.blit(background, (0, 0))
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
 
-
-def display_high_scores():
-    pass
-
-
-def draw():
-    screen.blit("background, (0,0)")
-    if not GameOver:
-        balloon.draw()
-        bird.draw()
-        house.draw()
-        tree.draw()
-        screen.draw.text("Score: " + str(score), (700, 5), color="black")
-    else:
-        display_high_scores()
-
-
-# initialise the pygame zero
-pgzrun.go()
+    pygame.display.update()
