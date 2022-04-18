@@ -4,11 +4,8 @@ import pygame
 # Initialise the pygame
 pygame.init()
 
-# background
 background = pygame.image.load('background.png')
-
-# create the screen
-screen = pygame.display.set_mode((800, 600))
+screen = pygame.display.set_mode((800, 600))        # create the screen
 
 # title and icon
 pygame.display.set_caption("Balloon Flight")
@@ -17,23 +14,32 @@ pygame.display.set_icon(icon)
 
 # player
 playerImg = pygame.image.load('balloon.png')
-playerX = 370
+playerBalloon = pygame.transform.scale(playerImg, (160, 160))
+playerX = 400
 playerY = 300
 
-# test
+# obstacles
+birdImg = pygame.image.load('bird-up.png')
+# itemBird = pygame.transform.scale(birdImg, (160, 160))
+birdX = randint(800, 1600)
+birdY = randint(10, 200)
+
 houseImg = pygame.image.load('house.png')
-houseX = 100
-houseY = 300
+itemHouse = pygame.transform.scale(houseImg, (160, 160))
+houseX = randint(800, 1600)
+houseY = 460
 
 treeImg = pygame.image.load('tree.png')
-treeX = 200
-treeY = 200
+itemTree = pygame.transform.scale(treeImg, (170, 200))
+treeX = randint(800, 1600)
+treeY = 450
 
 
 def player():
-    screen.blit(playerImg, (playerX, playerY))
-    screen.blit(houseImg, (houseX, houseY))
-    screen.blit(treeImg, (treeX, treeY))
+    screen.blit(playerBalloon, (playerX, playerY))
+    screen.blit(birdImg, (birdX, birdY))
+    screen.blit(itemHouse, (houseX, houseY))
+    screen.blit(itemTree, (treeX, treeY))
 
 
 # Game loop
