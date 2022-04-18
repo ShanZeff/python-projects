@@ -20,24 +20,24 @@ playerY = 300
 
 # obstacles
 birdImg = pygame.image.load('bird-up.png')
-# itemBird = pygame.transform.scale(birdImg, (160, 160))
-birdX = randint(800, 1600)
+itemBird = pygame.transform.scale(birdImg, (95, 55))
+birdX = randint(200, 200)
 birdY = randint(10, 200)
 
 houseImg = pygame.image.load('house.png')
 itemHouse = pygame.transform.scale(houseImg, (160, 160))
-houseX = randint(800, 1600)
-houseY = 460
+houseX = 580
+houseY = 430
 
 treeImg = pygame.image.load('tree.png')
 itemTree = pygame.transform.scale(treeImg, (170, 200))
-treeX = randint(800, 1600)
-treeY = 450
+treeX = 20
+treeY = 390
 
 
 def player():
     screen.blit(playerBalloon, (playerX, playerY))
-    screen.blit(birdImg, (birdX, birdY))
+    screen.blit(itemBird, (birdX, birdY))
     screen.blit(itemHouse, (houseX, houseY))
     screen.blit(itemTree, (treeX, treeY))
 
