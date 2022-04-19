@@ -5,7 +5,7 @@ import pygame
 pygame.init()
 
 background = pygame.image.load('background.png')
-screen = pygame.display.set_mode((800, 600))        # create the screen
+screen = pygame.display.set_mode((800, 600))  # create the screen
 
 # title and icon
 pygame.display.set_caption("Balloon Flight")
@@ -22,7 +22,7 @@ playerY_change = 0
 # obstacles
 birdImg = pygame.image.load('bird-up.png')
 itemBird = pygame.transform.scale(birdImg, (95, 55))
-birdX = randint(200, 200)
+birdX = randint(200, 300)
 birdY = randint(10, 200)
 
 houseImg = pygame.image.load('house.png')
@@ -35,13 +35,17 @@ itemTree = pygame.transform.scale(treeImg, (170, 200))
 treeX = 20
 treeY = 390
 
-# screen.blit(itemBird, (birdX, birdY))
+
 # screen.blit(itemHouse, (houseX, houseY))
 # screen.blit(itemTree, (treeX, treeY))
 
 
 def player(x, y):
     screen.blit(playerBalloon, (x, y))
+
+
+def obstacle(x, y):
+    screen.blit(itemBird, (birdX, birdY))
 
 
 # Game loop
@@ -54,14 +58,20 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-        if event.type == pygame.KEYDOWN:        # when pressing any key
-            if event.key == pygame.K_UP:
-                playerY_change = -0.1
-
-        if event.type == pygame.KEYUP:          # releasing the key press
-            if event.type == pygame.K_UP:
-                playerY_change = 0.1
+        if event.type == pygame.KEYDOWN:  # goes up when pressed
+            if event.key == pygame.K_SPACE:
+                playerY_change = -2.3
+        elif event.type == pygame.KEYUP:  # goes down when released
+            if event.key == pygame.K_SPACE:
+                playerY_change = 0.3
 
     playerY += playerY_change
+
+    if playerY <= 0:
+        playerY = 0
+    elif playerY >= 440:
+        playerY = 440
+
+    obstacle(birdX, birdY)
     player(playerX, playerY)
     pygame.display.update()
