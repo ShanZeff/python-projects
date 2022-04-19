@@ -15,8 +15,9 @@ pygame.display.set_icon(icon)
 # player
 playerImg = pygame.image.load('balloon.png')
 playerBalloon = pygame.transform.scale(playerImg, (160, 160))
-playerX = 400
+playerX = 310
 playerY = 300
+playerY_change = 0
 
 # obstacles
 birdImg = pygame.image.load('bird-up.png')
@@ -34,12 +35,13 @@ itemTree = pygame.transform.scale(treeImg, (170, 200))
 treeX = 20
 treeY = 390
 
+# screen.blit(itemBird, (birdX, birdY))
+# screen.blit(itemHouse, (houseX, houseY))
+# screen.blit(itemTree, (treeX, treeY))
 
-def player():
-    screen.blit(playerBalloon, (playerX, playerY))
-    screen.blit(itemBird, (birdX, birdY))
-    screen.blit(itemHouse, (houseX, houseY))
-    screen.blit(itemTree, (treeX, treeY))
+
+def player(x, y):
+    screen.blit(playerBalloon, (x, y))
 
 
 # Game loop
@@ -52,5 +54,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    player()
+        if event.type == pygame.KEYDOWN:        # when pressing any key
+            if event.key == pygame.K_UP:
+                playerY_change = -0.1
+
+        if event.type == pygame.KEYUP:          # releasing the key press
+            if event.type == pygame.K_UP:
+                playerY_change = 0.1
+
+    playerY += playerY_change
+    player(playerX, playerY)
     pygame.display.update()
