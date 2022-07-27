@@ -1,5 +1,6 @@
 from random import randint
 import pygame
+import math
 
 # Initialise the pygame
 pygame.init()
@@ -24,6 +25,8 @@ birdImg = pygame.image.load('bird-up.png')
 itemBird = pygame.transform.scale(birdImg, (95, 55))
 birdX = randint(200, 300)
 birdY = randint(10, 200)
+birdX_change = 3.0
+birdY_change = 40
 
 houseImg = pygame.image.load('house.png')
 itemHouse = pygame.transform.scale(houseImg, (160, 160))
@@ -35,9 +38,7 @@ itemTree = pygame.transform.scale(treeImg, (170, 200))
 treeX = 20
 treeY = 390
 
-
-# screen.blit(itemHouse, (houseX, houseY))
-# screen.blit(itemTree, (treeX, treeY))
+score = 0
 
 
 def player(x, y):
@@ -48,12 +49,22 @@ def obstacle(x, y):
     screen.blit(itemBird, (birdX, birdY))
 
 
+def isCollision(birdX, birdY, playerX, playerY):
+    distance = math.sqrt(math.pow(birdX - playerX, 2) + math.pow(birdY - playerY, 2))
+    if distance < 27:
+        return True
+    else:
+        return False
+
+
 # Game loop
 running = True
 while running:
 
     # background image
     screen.blit(background, (0, 0))
+    screen.blit(itemHouse, (houseX, houseY))
+    screen.blit(itemTree, (treeX, treeY))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -63,14 +74,30 @@ while running:
                 playerY_change = -2.3
         elif event.type == pygame.KEYUP:  # goes down when released
             if event.key == pygame.K_SPACE:
-                playerY_change = 0.3
+                playerY_change = 0.5
 
     playerY += playerY_change
 
-    if playerY <= 0:
-        playerY = 0
+    if playerY <= -1:
+        playerY = -1
+        score += 1
+        print(score)
     elif playerY >= 440:
         playerY = 440
+
+    birdX += birdX_change
+
+    if birdX <= 0:
+        birdX_change = 3.0
+        birdY += birdY_change
+    elif birdX >= 700:
+        birdX_change = -3.0
+        birdY += birdY_change
+
+    collision = isCollision(birdX, birdY, playerX, playerY)
+    if collision:
+        birdY = randint(10, 200)
+        print("Game Over")
 
     obstacle(birdX, birdY)
     player(playerX, playerY)

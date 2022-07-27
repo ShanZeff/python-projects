@@ -44,8 +44,8 @@ and I am not {past_verb1}. I {verb1} as {job1} for the {name2} department stores
 at the latest. I don't {verb2}, but I occasionally {verb3}. I'm in {noun4} by {time2} PM, and make sure I get {number2} {quantity_of_time2} \
 of sleep, no matter what. After having a {liquid_holder} of {adj1} {liquid1} and doing about {number3} {quantity_of_time3} of {verb_ing1} \
 before going to bed, I usually have no problems {verb_ing1} until morning. Just like as {organism1}, I wake up without any {noun5} or \
-{noun6} in the morning, I was told there was no {noun7} at my last check-up. I'm trying to explain that I'm a {noun8} who whishes to {verb4} a \
+{noun6} in the morning, I was told there was no {noun7} at my last check-up. I'm trying to explain that I'm a {noun8} who wishes to {verb4} a \
 very {adj2} {noun9}. I take care not to {verb5} myself with any {noun10}, like winning or losing, that would cause me to lose {noun11} at night. \
-That is how I {verb6} with society, and I know that is what brings me {noun12}. Although, if I were to {verb7} I woudln't {verb8} to anyone."
+That is how I {verb6} with society, and I know that is what brings me {noun12}. Although, if I were to {verb7} I wouldn't {verb8} to anyone."
 
 print(madlibs)
